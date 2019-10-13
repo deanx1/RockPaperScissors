@@ -33,8 +33,8 @@ class History : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
-//        setSupportActionBar(toolbarHistory)
-//        supportActionBar?.title = "Your Game History"
+        setSupportActionBar(toolbarHistory)
+        supportActionBar?.title = "Your Game History"
 
         productRepository = ProductRepository(this)
         initViews()
