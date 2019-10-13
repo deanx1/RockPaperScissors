@@ -1,5 +1,6 @@
 package com.androidcourse.shoppinglistkotlin.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
@@ -38,13 +39,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        rvShoppingList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        rvShoppingList.adapter = productAdapter
-        rvShoppingList.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        createItemTouchHelper().attachToRecyclerView(rvShoppingList)
-        getShoppingListFromDatabase()
+//        rvShoppingList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+//        rvShoppingList.adapter = productAdapter
+//        rvShoppingList.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+//        createItemTouchHelper().attachToRecyclerView(rvShoppingList)
+//        getShoppingListFromDatabase()
+
+        btnGoHistory.setOnClickListener { onHistoryClick() }
 
         fab.setOnClickListener { addProduct() }
+    }
+
+    private fun onHistoryClick() {
+//        val profile = Profile(
+//            etFirstName.text.toString(),
+//            etLastName.text.toString(),
+//            etProfileDescription.text.toString(),
+//            profileImageUri
+//        )
+
+        val profileActivityIntent = Intent(this, History::class.java)
+//        val profileActivityIntent = Intent(this, MainActivity::class.java)
+//        profileActivityIntent.putExtra(ProfileActivity.PROFILE_EXTRA, profile)
+        startActivity(profileActivityIntent)
     }
 
     private fun getShoppingListFromDatabase() {

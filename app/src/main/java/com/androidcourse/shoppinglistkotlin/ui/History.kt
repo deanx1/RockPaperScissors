@@ -15,8 +15,7 @@ import com.androidcourse.shoppinglistkotlin.database.ProductRepository
 import com.androidcourse.shoppinglistkotlin.model.Product
 
 import kotlinx.android.synthetic.main.activity_history.*
-import kotlinx.android.synthetic.main.activity_history.fab
-import kotlinx.android.synthetic.main.activity_history.toolbar
+import kotlinx.android.synthetic.main.activity_history.toolbarHistory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.coroutines.CoroutineScope
@@ -33,9 +32,9 @@ class History : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = "Your Game History"
+        setContentView(R.layout.activity_history)
+//        setSupportActionBar(toolbarHistory)
+//        supportActionBar?.title = "Your Game History"
 
         productRepository = ProductRepository(this)
         initViews()
@@ -48,7 +47,6 @@ class History : AppCompatActivity() {
         createItemTouchHelper().attachToRecyclerView(rvShoppingList)
         getShoppingListFromDatabase()
 
-        fab.setOnClickListener { addProduct() }
     }
 
     private fun getShoppingListFromDatabase() {
@@ -71,22 +69,22 @@ class History : AppCompatActivity() {
         }
     }
 
-    private fun addProduct() {
-        if (validateFields()) {
-            mainScope.launch {
-                val product = Product(
-                    name = etProduct.text.toString(),
-                    quantity = etQuantity.text.toString().toInt()
-                )
-
-                withContext(Dispatchers.IO) {
-                    productRepository.insertProduct(product)
-                }
-
-                getShoppingListFromDatabase()
-            }
-        }
-    }
+//    private fun addProduct() {
+//        if (validateFields()) {
+//            mainScope.launch {
+//                val product = Product(
+//                    name = etProduct.text.toString(),
+//                    quantity = etQuantity.text.toString().toInt()
+//                )
+//
+//                withContext(Dispatchers.IO) {
+//                    productRepository.insertProduct(product)
+//                }
+//
+//                getShoppingListFromDatabase()
+//            }
+//        }
+//    }
 
     /**
      * Create a touch helper to recognize when a user swipes an item from a recycler view.

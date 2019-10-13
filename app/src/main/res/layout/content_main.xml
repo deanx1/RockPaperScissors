@@ -55,4 +55,13 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/btnGoHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/history"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tilProduct"
+        app:layout_constraintTop_toBottomOf="@+id/rvShoppingList" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
