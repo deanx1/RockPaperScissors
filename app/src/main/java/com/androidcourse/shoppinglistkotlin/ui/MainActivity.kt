@@ -140,11 +140,11 @@ class MainActivity : AppCompatActivity() {
     private fun computerChoose() : Int {
         val randomInteger = (1..3).shuffled().first()
         if (randomInteger == 1) {
-            textComputerPlay = " , computer chose rock "
+            textComputerPlay = ", computer chose rock "
         } else if (randomInteger == 2) {
-            textComputerPlay = " , computer chose paper "
+            textComputerPlay = ", computer chose paper "
         } else {
-            textComputerPlay = " , computer chose scissors "
+            textComputerPlay = ", computer chose scissors "
         }
         return randomInteger
     }
@@ -155,9 +155,10 @@ class MainActivity : AppCompatActivity() {
 
             mainScope.launch {
                 val product = Product(
-                    name = textWhoWon + textComputerPlay + textYourPlay,
-                    quantity = 1,
-                    test = "Date: " + currentDate
+                    whowon = textWhoWon,
+                    yourplay = textYourPlay,
+                    computerplay = textComputerPlay,
+                    date = currentDate
                 )
 
                 withContext(Dispatchers.IO) {

@@ -14,13 +14,16 @@ data class Product(
     @ColumnInfo(name = "id")
     var id: Long? = null,
 
-    @ColumnInfo(name = "name")
-    var name: String,
+    @ColumnInfo(name = "whowon")
+    var whowon: String,
 
-    @ColumnInfo(name = "quantity")
-    var quantity: Int,
+    @ColumnInfo(name = "yourplay")
+    var yourplay: String,
 
-    @ColumnInfo(name = "test")
-    var test: String
+    @ColumnInfo(name = "computerplay")
+    var computerplay: String,
+
+    @ColumnInfo(name = "date")
+    var date: String
 
 ) : Parcelable

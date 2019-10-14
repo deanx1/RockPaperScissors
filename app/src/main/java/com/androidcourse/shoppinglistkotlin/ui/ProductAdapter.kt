@@ -22,8 +22,8 @@ class ProductAdapter(private val products: List<Product>) : RecyclerView.Adapter
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(product: Product) {
-            itemView.tvProduct.text = product.name
-            itemView.tvDate.text = product.test
+            itemView.tvProduct.text = product.whowon + product.computerplay + product.yourplay
+            itemView.tvDate.text = product.date
         }
     }
 }
