@@ -18,6 +18,9 @@ data class Product(
     var name: String,
 
     @ColumnInfo(name = "quantity")
-    var quantity: Int
+    var quantity: Int,
+
+    @ColumnInfo(name = "test")
+    var test: String
 
 ) : Parcelable

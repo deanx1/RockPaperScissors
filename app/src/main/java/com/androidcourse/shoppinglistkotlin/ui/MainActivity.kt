@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun chooseRock() {
-        textYourPlay = ", you chose rock"
+        textYourPlay = ", you chose rock."
         val computerOutcome = computerChoose()
         ivYou.setImageResource(R.drawable.rock)
         if (computerOutcome == 1) {
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun choosePaper() {
-        textYourPlay = ", you chose paper"
+        textYourPlay = ", you chose paper."
         val computerOutcome = computerChoose()
         ivYou.setImageResource(R.drawable.paper)
         if (computerOutcome == 1) {
@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun chooseScissors() {
-        textYourPlay = ", you chose scissors"
+        textYourPlay = ", you chose scissors."
         val computerOutcome = computerChoose()
         ivYou.setImageResource(R.drawable.scissors)
         if (computerOutcome == 1) {
@@ -150,14 +150,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addProduct() {
-//        if (validateFields()) {
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
         val currentDate = sdf.format(Date())
 
             mainScope.launch {
                 val product = Product(
-                    name = textWhoWon + textComputerPlay + textYourPlay + ", time: " + currentDate,
-                    quantity = 1
+                    name = textWhoWon + textComputerPlay + textYourPlay,
+                    quantity = 1,
+                    test = "Date: " + currentDate
                 )
 
                 withContext(Dispatchers.IO) {
@@ -166,7 +166,6 @@ class MainActivity : AppCompatActivity() {
 
                 getShoppingListFromDatabase()
             }
-//        }
     }
 
     private fun onHistoryClick() {

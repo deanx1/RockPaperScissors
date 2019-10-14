@@ -23,7 +23,7 @@ class ProductAdapter(private val products: List<Product>) : RecyclerView.Adapter
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(product: Product) {
             itemView.tvProduct.text = product.name
-//            itemView.tvQuantity.text = product.quantity.toString()
+            itemView.tvDate.text = product.test
         }
     }
 }
