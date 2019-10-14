@@ -61,14 +61,14 @@ class History : AppCompatActivity() {
         }
     }
 
-    private fun validateFields(): Boolean {
-        return if (etProduct.text.toString().isNotBlank() && etQuantity.text.toString().isNotBlank()) {
-            true
-        } else {
-            Toast.makeText(this, "Please fill in the fields", Toast.LENGTH_SHORT).show()
-            false
-        }
-    }
+//    private fun validateFields(): Boolean {
+//        return if (etProduct.text.toString().isNotBlank() && etQuantity.text.toString().isNotBlank()) {
+//            true
+//        } else {
+//            Toast.makeText(this, "Please fill in the fields", Toast.LENGTH_SHORT).show()
+//            false
+//        }
+//    }
 
 //    private fun addProduct() {
 //        if (validateFields()) {

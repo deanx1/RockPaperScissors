@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity() {
 
         ibScissors.setOnClickListener { chooseScissors() }
 
-        fab.setOnClickListener { addProduct() }
     }
 
     private fun chooseRock() {
@@ -194,14 +193,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun validateFields(): Boolean {
-        return if (etProduct.text.toString().isNotBlank() && etQuantity.text.toString().isNotBlank()) {
-            true
-        } else {
-            Toast.makeText(this, "Please fill in the fields", Toast.LENGTH_SHORT).show()
-            false
-        }
-    }
+//    private fun validateFields(): Boolean {
+//        return if (etProduct.text.toString().isNotBlank() && etQuantity.text.toString().isNotBlank()) {
+//            true
+//        } else {
+//            Toast.makeText(this, "Please fill in the fields", Toast.LENGTH_SHORT).show()
+//            false
+//        }
+//    }
 
     /**
      * Create a touch helper to recognize when a user swipes an item from a recycler view.
