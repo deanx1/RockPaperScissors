@@ -47,7 +47,30 @@ class MainActivity : AppCompatActivity() {
 
         btnGoHistory.setOnClickListener { onHistoryClick() }
 
+        ibRock.setOnClickListener { addProduct() }
+
+        ibPaper.setOnClickListener { addProduct() }
+
+        ibScissors.setOnClickListener { addProduct() }
+
         fab.setOnClickListener { addProduct() }
+    }
+
+    private fun addProduct() {
+        if (validateFields()) {
+            mainScope.launch {
+                val product = Product(
+                    name = etProduct.text.toString(),
+                    quantity = etQuantity.text.toString().toInt()
+                )
+
+                withContext(Dispatchers.IO) {
+                    productRepository.insertProduct(product)
+                }
+
+                getShoppingListFromDatabase()
+            }
+        }
     }
 
     private fun onHistoryClick() {
@@ -81,23 +104,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Please fill in the fields", Toast.LENGTH_SHORT).show()
             false
-        }
-    }
-
-    private fun addProduct() {
-        if (validateFields()) {
-            mainScope.launch {
-                val product = Product(
-                    name = etProduct.text.toString(),
-                    quantity = etQuantity.text.toString().toInt()
-                )
-
-                withContext(Dispatchers.IO) {
-                    productRepository.insertProduct(product)
-                }
-
-                getShoppingListFromDatabase()
-            }
         }
     }
 
@@ -149,16 +155,16 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_delete_shopping_list -> {
-                deleteShoppingList()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        return when (item.itemId) {
+//            R.id.action_delete_shopping_list -> {
+//                deleteShoppingList()
+//                true
+//            }
+//            else -> super.onOptionsItemSelected(item)
+//        }
+//    }
 }

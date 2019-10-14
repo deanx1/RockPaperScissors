@@ -17,6 +17,7 @@ import com.androidcourse.shoppinglistkotlin.model.Product
 import kotlinx.android.synthetic.main.activity_history.*
 import kotlinx.android.synthetic.main.activity_history.toolbarHistory
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_history.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -5,4 +5,9 @@
     <string name="your_game_history">Your Game History</string>
     <string name="title_activity_history">History</string>
     <string name="history">History</string>
+    <string name="welcome">Welcome</string>
+    <string name="instructions">Instructions: select rock, paper or scissors to play.</string>
+    <string name="vs">VS</string>
+    <string name="computer">Computer</string>
+    <string name="you">You</string>
 </resources>
