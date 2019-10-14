@@ -20,6 +20,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +29,10 @@ class MainActivity : AppCompatActivity() {
     private val productAdapter = ProductAdapter(shoppingList)
     private lateinit var productRepository: ProductRepository
     private val mainScope = CoroutineScope(Dispatchers.Main)
+
+    private var textWhoWon = "who won default text"
+    private var textYourPlay = "yourPlay default text"
+    private var textComputerPlay = "ComputerPlay won default text"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +63,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun chooseRock() {
+        textYourPlay = ", you chose rock"
         val computerOutcome = computerChoose()
         ivYou.setImageResource(R.drawable.rock)
         if (computerOutcome == 1) {
@@ -72,9 +79,11 @@ class MainActivity : AppCompatActivity() {
             ivComputer.setImageResource(R.drawable.scissors)
             win()
         }
+        addProduct()
     }
 
     private fun choosePaper() {
+        textYourPlay = ", you chose paper"
         val computerOutcome = computerChoose()
         ivYou.setImageResource(R.drawable.paper)
         if (computerOutcome == 1) {
@@ -90,9 +99,11 @@ class MainActivity : AppCompatActivity() {
             ivComputer.setImageResource(R.drawable.scissors)
             lose()
         }
+        addProduct()
     }
 
     private fun chooseScissors() {
+        textYourPlay = ", you chose scissors"
         val computerOutcome = computerChoose()
         ivYou.setImageResource(R.drawable.scissors)
         if (computerOutcome == 1) {
@@ -108,33 +119,46 @@ class MainActivity : AppCompatActivity() {
             ivComputer.setImageResource(R.drawable.scissors)
             draw()
         }
+        addProduct()
     }
 
     private fun win () {
-        tvOutcome.text = "You win!"
-        ivComputer
+        textWhoWon = "You win!"
+        tvOutcome.text = textWhoWon
     }
 
     private fun draw () {
-        tvOutcome.text = "Draw!"
+        textWhoWon = "Draw!"
+        tvOutcome.text = textWhoWon
     }
 
     private fun lose () {
-        tvOutcome.text = "You lose!"
+        textWhoWon = "You lose!"
+        tvOutcome.text = textWhoWon
     }
 
     // 1 is rock, 2 is paper, 3 is scissors
     private fun computerChoose() : Int {
         val randomInteger = (1..3).shuffled().first()
+        if (randomInteger == 1) {
+            textComputerPlay = " , computer chose rock "
+        } else if (randomInteger == 2) {
+            textComputerPlay = " , computer chose paper "
+        } else {
+            textComputerPlay = " , computer chose scissors "
+        }
         return randomInteger
     }
 
     private fun addProduct() {
-        if (validateFields()) {
+//        if (validateFields()) {
+        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+        val currentDate = sdf.format(Date())
+
             mainScope.launch {
                 val product = Product(
-                    name = etProduct.text.toString(),
-                    quantity = etQuantity.text.toString().toInt()
+                    name = textWhoWon + textComputerPlay + textYourPlay + ", time: " + currentDate,
+                    quantity = 1
                 )
 
                 withContext(Dispatchers.IO) {
@@ -143,7 +167,7 @@ class MainActivity : AppCompatActivity() {
 
                 getShoppingListFromDatabase()
             }
-        }
+//        }
     }
 
     private fun onHistoryClick() {
@@ -155,7 +179,6 @@ class MainActivity : AppCompatActivity() {
 //        )
 
         val profileActivityIntent = Intent(this, History::class.java)
-//        val profileActivityIntent = Intent(this, MainActivity::class.java)
 //        profileActivityIntent.putExtra(ProfileActivity.PROFILE_EXTRA, profile)
         startActivity(profileActivityIntent)
     }
