@@ -47,13 +47,86 @@ class MainActivity : AppCompatActivity() {
 
         btnGoHistory.setOnClickListener { onHistoryClick() }
 
-        ibRock.setOnClickListener { addProduct() }
+        ibRock.setOnClickListener { chooseRock() }
 
-        ibPaper.setOnClickListener { addProduct() }
+        ibPaper.setOnClickListener { choosePaper() }
 
-        ibScissors.setOnClickListener { addProduct() }
+        ibScissors.setOnClickListener { chooseScissors() }
 
         fab.setOnClickListener { addProduct() }
+    }
+
+    private fun chooseRock() {
+        val computerOutcome = computerChoose()
+        ivYou.setImageResource(R.drawable.rock)
+        if (computerOutcome == 1) {
+            //draw
+            ivComputer.setImageResource(R.drawable.rock)
+            draw()
+        } else if (computerOutcome == 2) {
+            //lose
+            ivComputer.setImageResource(R.drawable.paper)
+            lose()
+        } else  {
+            //win
+            ivComputer.setImageResource(R.drawable.scissors)
+            win()
+        }
+    }
+
+    private fun choosePaper() {
+        val computerOutcome = computerChoose()
+        ivYou.setImageResource(R.drawable.paper)
+        if (computerOutcome == 1) {
+            //win
+            ivComputer.setImageResource(R.drawable.rock)
+            win()
+        } else if (computerOutcome == 2) {
+            //draw
+            ivComputer.setImageResource(R.drawable.paper)
+            draw()
+        } else  {
+            //lose
+            ivComputer.setImageResource(R.drawable.scissors)
+            lose()
+        }
+    }
+
+    private fun chooseScissors() {
+        val computerOutcome = computerChoose()
+        ivYou.setImageResource(R.drawable.scissors)
+        if (computerOutcome == 1) {
+            //lose
+            ivComputer.setImageResource(R.drawable.rock)
+            lose()
+        } else if (computerOutcome == 2) {
+            //win
+            ivComputer.setImageResource(R.drawable.paper)
+            win()
+        } else  {
+            //scissors
+            ivComputer.setImageResource(R.drawable.scissors)
+            draw()
+        }
+    }
+
+    private fun win () {
+        tvOutcome.text = "You win!"
+        ivComputer
+    }
+
+    private fun draw () {
+        tvOutcome.text = "Draw!"
+    }
+
+    private fun lose () {
+        tvOutcome.text = "You lose!"
+    }
+
+    // 1 is rock, 2 is paper, 3 is scissors
+    private fun computerChoose() : Int {
+        val randomInteger = (1..3).shuffled().first()
+        return randomInteger
     }
 
     private fun addProduct() {
