@@ -4,34 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
     android:clickable="true"
     android:orientation="vertical"
-    android:background="?attr/selectableItemBackground"
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/tvProduct"
-        android:layout_width="0dp"
+        android:id="@+id/tvWhoWon"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Milk"
+        android:layout_marginTop="4dp"
+        android:text="Outcome"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDate" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2 X"
+        android:layout_marginTop="40dp"
+        android:text="Date"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/tvProduct"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="377dp" />
+        app:layout_constraintTop_toTopOf="@id/tvWhoWon" />
+
+    <TextView
+        android:id="@+id/tvVsHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="VS"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvDate" />
+
+    <ImageView
+        android:id="@+id/ivComputerHistory"
+        android:layout_width="123dp"
+        android:layout_height="129dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVsHistory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvVsHistory"
+        app:layout_constraintVertical_bias="0.504"
+        app:srcCompat="@drawable/default_rock" />
+
+    <ImageView
+        android:id="@+id/ivYouHistory"
+        android:layout_width="123dp"
+        android:layout_height="129dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVsHistory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvVsHistory"
+        app:layout_constraintVertical_bias="0.504"
+        app:srcCompat="@drawable/default_rock" />
+
+    <TextView
+        android:id="@+id/tvComputerHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/computer"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/ivComputerHistory"
+        app:layout_constraintStart_toStartOf="@+id/ivComputerHistory"
+        app:layout_constraintTop_toBottomOf="@+id/ivComputerHistory" />
+
+    <TextView
+        android:id="@+id/tvYouHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/you"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/ivYouHistory"
+        app:layout_constraintStart_toStartOf="@+id/ivYouHistory"
+        app:layout_constraintTop_toBottomOf="@+id/ivYouHistory" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
