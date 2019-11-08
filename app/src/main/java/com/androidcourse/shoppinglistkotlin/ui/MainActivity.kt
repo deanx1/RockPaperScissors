@@ -140,11 +140,11 @@ class MainActivity : AppCompatActivity() {
     private fun computerChoose() : Int {
         val randomInteger = (1..3).shuffled().first()
         if (randomInteger == 1) {
-            textComputerPlay = ", computer chose rock "
+            textComputerPlay = " Computer chose rock"
         } else if (randomInteger == 2) {
-            textComputerPlay = ", computer chose paper "
+            textComputerPlay = " Computer chose paper"
         } else {
-            textComputerPlay = ", computer chose scissors "
+            textComputerPlay = " Computer chose scissors"
         }
         return randomInteger
     }
